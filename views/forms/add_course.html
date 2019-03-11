@@ -1,0 +1,75 @@
+<meta charset="utf-8">
+<h2 class="text-center" style="color: #007132;"><i class="fa fa-plus-circle"></i> Cadastro de Curso</h2>
+<hr style="border-bottom: 3px solid #FC6836">
+
+<form action="<?=$GLOBALS['project_index'];?>/controllers/add_course.php" enctype="multipart/form-data" method="POST">
+
+<div class="row">
+
+	<div class="form-group col-md-6" >
+		<label for="">Nome: </label><br>
+		<input type="text" placeholder="Nome do Curso" required class="form-control" name="course_name">
+	</div>
+
+	<div class="form-group col-md-3" >
+		<label for="">Início: </label><br>
+		<input type="date" placeholder="Data de início" required class="form-control" name="course_date_in" id="date">
+	</div>
+
+	<div class="form-group col-md-3" >
+		<label for="">Término: </label><br>
+		<input type="date" placeholder="Data de término" required class="form-control" name="course_date_end" id="date2">
+	</div>
+
+	<div class="form-group col-md-4" >
+		<label for="">Carga horária: </label><br>
+		<input type="text" placeholder="Carga horária" required class="form-control" name="course_workload">
+	</div>
+
+	<div class="form-group col-md-4" >
+		<label for="">Cronograma: </label><br>
+		<input type="text" placeholder="Cronograma do curso" required class="form-control" name="course_schedule">
+	</div>
+	
+<!--<div class="form-group col-md-4" >
+	<label for="">Status: </label><br>
+	<input type="text" placeholder="Status do curso" required class="form-control" name="course_status" >
+	</div>
+ -->
+<!--<div class="form-group col-md-4" >
+		<label for="">Professor do Curso: </label><br>
+		<select name="teacher_id" id="" class="form-control" required>
+			<option disabled>Selecione</option>
+			<option >Sem professor</option>
+		<?php 			
+			foreach ($teachers as $t) {?>
+				<option value="<?=$t['id_course'];?>"><?=$p['course_name'];?></option>
+			<?php } ?>
+		 
+		</select>
+	</div> -->
+
+	<input type="hidden" name="course_key" value="<?=md5(rand(0,9999999));?>">
+
+	<div class="form-group col-md-6" >
+		<button id="cad_course" class="btn btn-success" style="background-color:#007132; !important">
+			<i class="fa fa-plus-square"></i>
+			Inserir Curso
+		</button>
+	</div>
+	</div>
+	
+</form>
+
+<script>
+	//Auto Close Timer
+    $('#cad_product').click(function(){
+         swal({   
+            title: "Cadastro de Curso",   
+            text: "Curso Cadastrado com sucesso.",   
+            timer: 2000,   
+            showConfirmButton: false 
+        });
+    });
+</script>
+

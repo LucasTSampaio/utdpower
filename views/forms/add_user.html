@@ -1,0 +1,87 @@
+<meta charset="utf-8">
+<h2 class="text-center" style="color: #007132;"><i class="fa fa-plus-circle"></i> Cadastro de Usuário</h2>
+<hr style="border-bottom: 3px solid #FC6836">
+
+<form action="<?=$GLOBALS['project_index'];?>/controllers/add_user.php" enctype="multipart/form-data" method="POST">
+
+<div class="row">
+	<div class="form-group col-md-6" >
+		<label for="">Nome: </label><br>
+		<input type="text" placeholder="Nome do Usuário" required class="form-control" name="user_name">
+	</div>
+
+	<div class="form-group col-md-6" >
+		<label for="">Email: </label><br>
+		<input type="email" placeholder="Email do Usuário" required class="form-control" name="user_email">
+	</div>
+
+	<div class="form-group col-md-4" >
+		<label for="">Senha: </label><br>
+		<input type="password" placeholder="Senha do Usuário" required class="form-control" name="user_password">
+	</div>
+
+	<div class="form-group col-md-4" >
+		<label for="">CPF: </label><br>
+		<input type="text" placeholder="CPF do Usuário" required class="form-control" name="user_cpf" id="cpf">
+	</div>
+
+	<div class="form-group col-md-4" >
+		<label for="">Telefone: </label><br>
+		<input type="text" placeholder="Telefone do Usuário" required class="form-control" name="user_phone" id="phone">
+	</div>
+
+	<div class="form-group col-md-4" >
+		<label for="">Celular: </label><br>
+		<input type="text" placeholder="Celular do Usuário" required class="form-control" name="user_cellphone" id="cellphone">
+	</div>
+
+	<div class="form-group col-md-8" >
+		<label for="">Endereço: </label><br>
+		<input type="text" placeholder="Endereço do Usuário" required class="form-control" name="user_address">
+	</div>
+
+	<div class="form-group col-md-4" >
+		<label for="">Data de Nascimento: </label><br>
+		<input type="date" placeholder="Nascimento do Usuário" required class="form-control" name="user_birth" id="date">
+	</div>
+
+	<div class="form-group col-md-4" >
+		<label for="">Perfil do Usuário: </label><br>
+		<select name="profile_id" id="" class="form-control" required>
+			<option selected>Selecione</option>
+		<?php 			
+			foreach ($profiles as $p) {?>
+
+				<option value="<?=$p['id_profile'];?>"><?=$p['profile_name'];?></option>
+			<?php } ?>
+		 
+		</select>
+	</div>
+
+	<div class="form-group col-md-4" >
+		<label for="">Foto do Usuário: </label><br>
+		<input type="file" name="user_photo">
+		<!-- <input type="file"  class="form-control" name="user_photo"> -->
+	</div>
+	<div class="form-group col-md-8" >
+		<button id="cad_user" class="btn btn-success" style="background-color:#007132; !important">
+			<i class="fa fa-plus-square"></i>
+			Inserir Usuário
+		</button>
+	</div>
+	</div>
+	
+</form>
+
+<script>
+	//Auto Close Timer
+    $('#cad_product').click(function(){
+         swal({   
+            title: "Cadastro de Usuários",   
+            text: "Usuário Cadastrado com sucesso.",   
+            timer: 2000,   
+            showConfirmButton: false 
+        });
+    });
+</script>
+

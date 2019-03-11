@@ -1,0 +1,140 @@
+<meta charset="utf-8">
+<?php
+	/**
+	*	@author: Anthony Jefferson;
+	*	@package: /view/list_common.php
+	*
+	* 	Este arquivo controla a criação e a 
+	*   visualização de dados
+	* 	em uma tabela. 
+	*
+	***/
+
+	//Testar se existe conteúdo!
+	#Se não existir, ele mostra a label 
+	if($table_content == false){
+		echo '<div class="alert alert-success" align="center">';
+			 echo ' Não existem resultados';
+		echo '</div><br><br>';
+		#se existir conteúdo, ele cria a tabela
+	}else{
+?>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+
+	//função para guardar o id no filtro
+	function delete_reg(filter){
+		$('#value').val(filter);
+	}
+</script>
+
+
+<!-- modal para excluir -->
+<!-- Modal -->
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="myModal">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+    	<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Excluir???</h4>
+        <h5>Esta operação não pode ser desfeita. Tem Certeza?</h5>
+      </div>
+
+      <div class="modal-body">
+      		<form action="<?php echo $GLOBALS['project_index'].$delete_destiny;?>" method="POST">
+      			<input type="hidden" name="filter" id="value">
+      			<button type="" class="btn btn-danger">
+      				<span class="glyphicon glyphicon-ok-sign"></span>
+      				Sim, Excluir.	
+      			</button>
+
+      			<button type="button" class="btn btn-default" data-dismiss="modal" aria-lavel="Close">
+      				<span class="glyphicon glyphicon-remove-sign"></span>
+      				Não, Cancelar.
+      			</button>
+
+      		</form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- fim modal -->
+	
+<table class="table table-hover table-striped" id="tableGeral">
+	<thead style="text-align:center; color:white; background-color:#007132;!important">
+	<?php
+		//Imprimindo os títulos
+		echo '<tr>';
+			foreach ($table_titles as $key => $value) {
+				echo '<th>',$value,'</th>';
+			}
+	?>
+			<th> Ações </th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<?php
+			foreach ($table_content as $key => $value) {
+				echo '<tr>';
+				foreach ($table_titles as $k => $v) {
+					if ($k == "user_photo") {
+						echo '<td>';
+							echo '<img src="'.$GLOBALS['project_index'].'/views/profile_images/'.$value[$k].'"width="80" height="80">';
+						echo '</td>';	
+					} else {
+						echo '<td>',$value[$k],'</td>';
+					}
+					
+				}
+				
+					echo '<td>';
+					if(isset($update) && $update == true){
+						echo '<a href="'.$update_destiny.'&filter='.base64_encode($value[$filter]).'" class="btn btn-success btn-xs">';
+							echo '<span class="fa fa-pencil"></span>';
+						echo '</a>&nbsp;'; 
+
+					}
+
+					if (@$value['id_user'] != @$user->id_user) {
+					
+						if(isset($delete) && $delete == true){
+							
+							echo '<a href="#myModal" class="btn btn-danger btn-xs" data-toggle="modal" id="tooltip" title="Excluir" onclick="delete_reg(\'',$value[$filter],'\');">';
+								echo '<span class="fa fa-trash"></span>';
+							echo '</a> ';
+							
+						}	
+					}
+					if(isset($print) && $print == true){
+						echo '<a onclick="window.print()" class="btn btn-primary btn-xs">';
+						echo '<span class="fa fa-print"></span> </a> ';
+					}
+
+					if(isset($block) && $block == true){
+						echo ' <a class="btn btn-warning btn-xs">';
+						echo '<span class="fa fa-ban"></span>';
+					}
+
+					if(isset($status) && $status == true){
+						if($value['agend_status'] == true){
+							echo '<a href="" class="btn btn-xs btn-success" title="Agendamento Concluído">';
+							echo '<i class="fa fa-check-square"></i></a>';
+						
+						}else{
+							echo '<a href="" class="btn btn-xs btn-danger" title="Concluir Agendamento">';
+							echo '<i class="fa fa-exclamation-triangle"></i></a>';
+						}
+					}
+					echo '</td>';
+				echo '</tr>';
+
+			}
+		?>
+	</tbody>
+</table>
+<?php } ?>

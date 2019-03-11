@@ -1,0 +1,95 @@
+<ul class="list-unstyled components">
+	<?php if($user->profile_page == "admin.php"){ ?>
+		<li>
+			<a href="?option=admin_painel">
+				<i class="fa fa-home"></i> Painel Administrativo 
+			</a>
+		</li>
+
+		<li class="">
+	        <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+	            <i class="fa fa-users"></i>
+	            Usuários
+	        </a>
+	        <ul class="collapse list-unstyled" id="homeSubmenu1">
+	            <li>
+	                <a href="?option=list_users"><i class="fa fa-bars"></i> Listar Usuários</a>
+	            </li>
+	            
+	            <li>
+	                <a href="?option=add_user">
+	                	<i class="fa fa-plus-square"></i>Adicionar Usuário</a>
+	            </li>
+	        </ul>
+    	</li>
+
+		<li class="">
+            <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fa fa-address-card"></i>
+                Alunos
+            </a>
+            <ul class="collapse list-unstyled" id="homeSubmenu2">
+                <li>
+                    <a href="?option=list_students">Listar Alunos</a>
+                </li>
+                
+                <li>
+                    <a href="?option=add_student">Adicionar Aluno</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="">
+            <a href="#homeSubmenu5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fa fa-book"></i>
+                Cursos
+            </a>
+            <ul class="collapse list-unstyled" id="homeSubmenu5">
+                <li>
+                    <a href="?option=list_courses">Listar Cursos</a>
+                </li>
+                
+                <li>
+                    <a href="?option=add_course">Adicionar Curso</a>
+                </li>
+            </ul>
+        </li>
+
+    <li class="">
+        <a href="#homeSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="fa fa-graduation-cap"></i>
+            Instrutores
+        </a>
+        <ul class="collapse list-unstyled" id="homeSubmenu3">
+            <li>
+                <a href="?option=list_teachers">Listar Instrutores</a>
+            </li>
+            
+            <li>
+                <a href="?option=add_teacher">Adicionar Instrutor</a>
+            </li>
+        </ul>
+    </li>
+    
+    <li>
+        <a href="?option=list_statistics">
+            <i class="fa fa-line-chart"></i> Estatisticas 
+        </a>
+    </li>
+
+    <li>
+        <a href="?option=suport">
+            <i class="fa fa-comment"></i> Suporte 
+        </a>
+    </li>
+
+	<?php } ?>
+
+    <li>
+        <a href="controllers/logout.php">
+            <i class="fa fa-power-off"></i> Sair 
+        </a>
+    </li>
+
+
+</ul>

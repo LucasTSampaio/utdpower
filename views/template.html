@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title><?=$page_title;?></title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="<?=$project_index;?>/views
+/assets/bootstrap/css/bootstrap.min.css">
+    
+    <!-- Bootstrap Font-awesome -->
+    <link rel="stylesheet" href="<?=$project_index;?>/views
+/assets/font-awesome/css/font-awesome.min.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="<?=$project_index;?>/views
+/assets/style4.css">
+
+    <link rel="stylesheet" href="<?=$project_index;?>/views
+/assets/plugins/datatables/dt.css">
+ <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.css">
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:#007132; !important">
+        <img src="<?=$project_index;?>/views/assets/images/utd.png" style="max-width:210px; max-height:160px; width:auto; height: auto;">
+          <a class="navbar-brand" href="#"> Universidade do Trabalho Digital</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+    </nav>
+
+
+    <div class="wrapper" style="margin-top:60px">
+
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3 style="color:#007132">Sistema | UTD</h3>
+                <strong style="color:#007132">UTD</strong>
+            </div>
+            <div class="sidebar-header">
+                <h3>
+                    <img src="<?=$project_index;?>/views/profile_images/<?=$user->user_photo;?>" class="rounded-circle" style="max-width:210px; max-height:160px; width:auto; height: auto;"><br>
+                </h3>
+                <p style="color: #000"> Ultimo Acesso: <?=$user->user_last_access;?></p>
+            </div>
+
+            <!-- Menu -->
+            <?php include_once 'menu.html'; ?>
+            <!-- End Menu -->
+
+
+            <ul class="list-unstyled CTAs">
+                <!-- li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li>
+                <li>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                </li> -->
+
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#007132; !important">
+                        <i class="fa fa-align-left"></i>
+                        <span>Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+
+                    <button style="margin:2px;"class="btn btn-secondary" onclick="history.back();">
+                        <i class="fa fa-arrow-left"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Função de conteúdos -->
+            <?php page_content(); ?>
+
+        </div>
+    </div>
+
+        <script type="text/javascript" src="<?=$project_index;?>/views/assets/bootstrap/js/jquery.js"></script>
+        <script type="text/javascript" src="<?=$project_index;?>/views/assets/bootstrap/js/popper.min.js"></script>
+        <script type="text/javascript" src="<?=$project_index;?>/views/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="<?=$project_index;?>/views/assets/bootstrap/js/mask.js"></script>
+        <script type="text/javascript" src="<?=$project_index;?>/views/assets/plugins/datatables/dt.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#tableGeral").DataTable();
+        });
+    </script>
+        
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#phone").mask("(99) 9999-9999");
+            $("#cellphone").mask("(99) 99999-9999");
+            $("#cpf").mask("999.999.999-99");
+            $("#cnpj").mask("99.999.999/9999-99");
+            $("#date").mask("99/99/9999");
+            $("#date2").mask("99/99/9999");
+ 
+        });
+    </script>
+
+    <?php validate_message(); ?>
+    
+</body>
+
+</html>
